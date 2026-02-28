@@ -8,9 +8,8 @@ import numpy as np
 load_data returns a tuple containing the training data, the validation data, and the test data.
 '''
 def load_data():
-    f = gzip.open('./mnist.pkl.gz', 'rb')
-    training_data, validation_data, test_data = pickle.load(f)
-    f.close()
+    with gzip.open('mnist.pkl.gz', 'rb') as f:
+        training_data, validation_data, test_data = pickle.load(f, encoding='latin1')
     return (training_data, validation_data, test_data)
 
 '''
